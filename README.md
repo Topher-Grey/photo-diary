@@ -24,3 +24,4 @@ _________________________________________________________
 
 _________________________________________________________
 
+Users will be able to login after they register. They then will have an index of the 3 most recent entries when they enter the site. Their will be a search bar that will look for keywords that the user adds to their photo diary entry. Each photo will have a text entry that can be used to describe the moment or just talk about the day. The date will autopopulate to each entry, and users can share entries publicly.
