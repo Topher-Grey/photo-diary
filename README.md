@@ -17,14 +17,14 @@ _________________________________________________________
 
 _________________________________________________________
 
-> ##User Model:
+> User Model:
 * username (email address)
 * display_name
 * first_name
 * last_name
 * birthday
 
-> ##Photo Model:
+> Photo Model:
 * user (from user model)
 * photo_name
 * description
@@ -32,7 +32,7 @@ _________________________________________________________
 * URL ` I believe this field will be able to stay the same if someone uploads the photo or links it from a service like Flickr `
 
 
-> ##Journal Model:
+> Journal Model:
 * user (from user model)
 * photo (from photo model)
 * date_created
