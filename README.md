@@ -24,16 +24,11 @@ _________________________________________________________
 * last_name
 * birthday
 
-> Photo Model:
-* user (from user model)
-* photo_name
-* description
-* keyword(s) ` being a single field or multiple fields will depend on search tools, possibly will be an array of strings `
-* URL ` I believe this field will be able to stay the same if someone uploads the photo or links it from a service like Flickr `
-
-
 > Journal Model:
 * user (from user model)
+* entries `array of entry_ids`
+
+> Entry Model:
 * photo (from photo model)
 * date_created
 * journal_date ` this will be when the user experienced the event as they may upload the photo a few days later `
@@ -41,6 +36,12 @@ _________________________________________________________
 * keyword(s) ` like photo model, will allow for searching for entries that don't include a photo but might be a poem or story `
 journal_entry ` the text of the journal posting `
 public ` Boolean if it should be shared with others `
+
+> Photo Model:
+* photo_name
+* description
+* keyword(s) ` being a single field or multiple fields will depend on search tools, possibly will be an array of strings `
+* URL ` I believe this field will be able to stay the same if someone uploads the photo or links it from a service like Flickr `
 
 
 
