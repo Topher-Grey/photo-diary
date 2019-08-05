@@ -1,23 +1,42 @@
-const express 			= require('express');
+  const express 			= require('express');
 const app 				= express()
-const body_parser 		= require('body-parser');
-const method_override 	= require('method-override');
+const bodyParser 		= require('body-parser');
+const methodOverride 	= require('method-override');
 const session 			= require('express-session');
 const PORT 				= process.env.PORT || 3000
 
 require('./db/db')
 
-app.use(express.static('public'))
-app.use(body_parser.urlencoded({extended: false}))
+const authController 	= require('./controllers/authController')
+const userController 	= require('./controllers/users')
 
+
+app.use(express.static('public'))
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(session({
+	secret: process.env.SESSION_SECRET,
+	resave: false,
+	saveUninitialized: false
+}))
+
+
+app.use('/auth', authController)
+app.use('/user', userController)
 
  
 
 
 app.get('/', (req, res) => {
-		console.log("This is the req.body", req.body, 
-			"\n*****************************************");
-		res.render('index.ejs')
+		// console.log("This is the req.body", req.body, 
+			// "\n*****************************************");
+		if((req.session.loggedIn === true)) {
+			res.render('index.ejs');
+		} else {
+			req.session.message = "You must be logged in to do that"
+			res.redirect('/auth')
+		}
+		
 })
 
 app.listen(PORT, () => {

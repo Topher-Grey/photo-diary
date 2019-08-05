@@ -34,8 +34,8 @@ _________________________________________________________
 * journal_date ``` this will be when the user experienced the event as they may upload the photo a few days later ```
 * title
 * keyword(s) ``` like photo model, will allow for searching for entries that don't include a photo but might be a poem or story ```
-journal_entry ``` the text of the journal posting ```
-public ``` Boolean if it should be shared with others ```
+* journal_entry ``` the text of the journal posting ```
+* public ``` Boolean if it should be shared with others ```
 
 > Photo Model:
 * photo_name

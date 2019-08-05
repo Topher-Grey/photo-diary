@@ -5,11 +5,11 @@ const entrySchema = new mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'photo'
 	},
-	date_created: Date,
-	journal_date: Date,
+	dateCreated: Date,
+	journalDate: Date,
 	title: String,
-	keywords: Array,
-	journal_entry: String,
+	keywords: [String],
+	journalEntry: String,
 	public: Boolean
 })
 
