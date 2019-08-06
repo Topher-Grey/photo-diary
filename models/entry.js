@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const entrySchema = new mongoose.Schema({
 	photo: {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: 'photo'
+		ref: 'Photo'
 	},
 	dateCreated: Date,
 	journalDate: Date,

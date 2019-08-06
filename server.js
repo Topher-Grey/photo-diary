@@ -1,4 +1,4 @@
-  const express 			= require('express');
+const express 			= require('express');
 const app 				= express()
 const bodyParser 		= require('body-parser');
 const methodOverride 	= require('method-override');
@@ -9,13 +9,14 @@ require('./db/db')
 
 const authController 	= require('./controllers/authController')
 const userController 	= require('./controllers/users')
+const journalController = require('./controllers/journals')
 
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(session({
-	secret: process.env.SESSION_SECRET,
+	secret: 'secretmessage', //process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: false
 }))
@@ -23,6 +24,7 @@ app.use(session({
 
 app.use('/auth', authController)
 app.use('/user', userController)
+app.use('/journals', journalController)
 
  
 
@@ -31,9 +33,10 @@ app.get('/', (req, res) => {
 		// console.log("This is the req.body", req.body, 
 			// "\n*****************************************");
 		if((req.session.loggedIn === true)) {
-			res.render('index.ejs');
+			res.render('index.ejs', {
+				title: 'Moment Escape'
+			});
 		} else {
-			req.session.message = "You must be logged in to do that"
 			res.redirect('/auth')
 		}
 		

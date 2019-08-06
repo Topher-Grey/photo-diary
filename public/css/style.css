@@ -1,0 +1,18 @@
+body {
+	background-color: skyblue;
+	font-family: 'Raleway', sans-serif;
+}
+
+.login {
+	border-left: 6px solid blue;
+  	background-color: lightgrey;
+}
+
+ul {
+	font-size: 20px;
+}
+
+img {
+	height: 100px;
+	width: 150px;
+}
