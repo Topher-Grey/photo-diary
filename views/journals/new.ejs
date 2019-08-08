@@ -4,8 +4,8 @@
 		<div>
 		<h2>Create New Journal:</h2>
         <h4>Journal for <%=user.displayName%></h4>
-    	<form action="/journal" method="POST">
-            <input type="hidden" name='user' value="<%=user._id%>"/>
+    	<form action="/journals" method="POST">
+            <input type="hidden" name='' value="<%=user._id%>"/>
             Journal Name: <input type="text" name='journalName'/><br/>
         	<button type='submit'>Create Journal</button>
     	</form>

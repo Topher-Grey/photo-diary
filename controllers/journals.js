@@ -6,7 +6,18 @@ const Journal  		= require('../models/journal');
 // Index page for journals
 router.get('/', async (req, res, next) => {
 	try {
-		const foundJournals = await Journal.find({user: user._id});
+		console.log("The username is: ");
+		console.log(req.session.username);
+		const userinfo = await User.find({username: req.session.username})
+		console.log("The user: ");
+		console.log(userinfo[0]);
+		const foundJournals = await Journal.find({user: userinfo._id});
+		console.log("\n here is foundJournals");
+		console.log(foundJournals);
+		res.render('journals/index.ejs', {
+			journals: foundJournals,
+			title: "Journal Page"
+		})
 
 	} catch(err){
 		next(err)
@@ -16,10 +27,14 @@ router.get('/', async (req, res, next) => {
 // New Journal Creation
 router.get('/new', async (req, res, next) => {
 	try{
-		const user = await User.find({user: req.session.userId});
-		console.log(user);
+		console.log("The username is: ");
+		console.log(req.session.username);
+		const userinfo = await User.find({username: req.session.username})
+		console.log("The user: ");
+		console.log(userinfo);
 		res.render('journals/new.ejs', {
-			user: user
+			user: userinfo[0],
+			title: "Create New Journal"
 		})
 
 	} catch(err) {
@@ -27,9 +42,11 @@ router.get('/new', async (req, res, next) => {
 	}
 });
 
+// Create New Journal
 router.post('/', async (req, res, next) => {
 	try {
 		const createdJournal = await Journal.create(req.body);
+		console.log("Created Journal: ");
 		console.log(createdJournal);
 		res.redirect('/journals')
 

@@ -33,6 +33,8 @@ app.get('/', (req, res) => {
 		// console.log("This is the req.body", req.body, 
 			// "\n*****************************************");
 		if((req.session.loggedIn === true)) {
+			console.log("Here is the user");
+			
 			res.render('index.ejs', {
 				title: 'Moment Escape'
 			});

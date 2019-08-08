@@ -30,8 +30,6 @@ router.post('/register', async (req, res, next) => {
       	console.log(createdUser, ' created user');
 
       	// set info on the session
-      	req.session.userId = createdUser._id;
-      	req.session.displayName = createdUser.displayName;
       	req.session.logged = true;
 
 

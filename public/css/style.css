@@ -8,6 +8,14 @@ body {
   	background-color: lightgrey;
 }
 
+.login input {
+	margin: 15px 10px 15px 10px;
+}
+
+.login button {
+	margin: 15px;
+}
+
 ul {
 	font-size: 20px;
 }
