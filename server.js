@@ -14,6 +14,7 @@ const journalController = require('./controllers/journals')
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(methodOverride('_method'));
 
 app.use(session({
 	secret: 'secretmessage', //process.env.SESSION_SECRET,
@@ -47,6 +48,6 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   const date = new Date()
   console.log(date.toLocaleString() + ": server running on port " + PORT + 
-  	"************************");
-  console.dir(process.env)
+  	"******************************************************************");
+  //console.dir(process.env)
 })

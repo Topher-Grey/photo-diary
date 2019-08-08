@@ -3,9 +3,19 @@ body {
 	font-family: 'Raleway', sans-serif;
 }
 
+.registerlogin {
+	background-color: black;
+	background-image: url("../images/DSCN0117.JPG");
+	background-position: top center;
+	background-repeat: no-repeat;
+}
+
 .login {
 	border-left: 6px solid blue;
   	background-color: lightgrey;
+  	margin: auto;
+  	margin-top: 40%;
+  	width: 40%;
 }
 
 .login input {
@@ -14,6 +24,20 @@ body {
 
 .login button {
 	margin: 15px;
+}
+.login {
+	background-color: rgba(255, 255, 255, 0.4)
+
+}
+
+.bubble {
+	border-radius: 5px;
+}
+
+.deleteButton:hover {
+	border-color: #2196F3;
+	border: 1px solid #2196F3
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 ul {

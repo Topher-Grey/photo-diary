@@ -1,12 +1,12 @@
 <% include ../partials/header.ejs%>
-<body>
+<body class="registerlogin">
 	<div class='container text-center'>
 		<div class='login'>
 		<h2>Login</h2>
     	<p><%=message%></p>
-    	<form action="/auth/login" method="POST">
-        	Username: <input type="text" name="username"/><br/>
-        	Password: <input type="password" name='password'/><br/>
+    	<form action="/auth/login" method="POST" class="form-signin">
+        	Username: <input type="text" name="username" class="bubble"/><br/>
+        	Password: <input type="password" name='password' class="bubble"/><br/>
         	<button type='submit'>Login</button>
     	</form>
         <form action='/auth/register' method='GET'><button>Create New Account</button></form>
