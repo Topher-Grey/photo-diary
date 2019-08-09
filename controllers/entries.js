@@ -22,5 +22,4 @@ router.get('/new', async (req, res, next) => {
 });
 
 
-module.exports = routerΩ
-[=p-o0i9aQ	]
+module.exports = router

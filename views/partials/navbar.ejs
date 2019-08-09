@@ -6,5 +6,16 @@
 		<li>
 			<a href="/journals/new">Create New Journal</a>
 		</li>
+		<li>
+			<a href="/entries/new">Add Entry To Journal</a>
+		</li>
+
+		<div class="account">
+			<li><% if(req.session.loggedIn){ %>
+				Hello, <%=user.displayName%>!</li>
+			<li><a href="/auth/logout">Logout</a></li>
+		</div>
+
+		</div>
 	</ul>
 </nav>

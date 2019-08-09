@@ -30,7 +30,9 @@ router.post('/register', async (req, res, next) => {
       	console.log(createdUser, ' created user');
 
       	// set info on the session
-      	req.session.logged = true;
+        req.session.loggedIn = true;
+        req.session.id = createdUser._id;
+        req.session.username = createdUser.username;
 
 
         res.redirect('/');

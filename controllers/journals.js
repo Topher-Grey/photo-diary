@@ -57,6 +57,8 @@ router.post('/', async (req, res, next) => {
 	}
 });
 
+// Show Page For Journal with Entry List
+
 // Edit Page For Journal
 router.get('/:id/edit', async (req, res, next) => {
 	try{
@@ -68,6 +70,7 @@ router.get('/:id/edit', async (req, res, next) => {
 		const foundJournal = await Journal.findOne({_id: req.params.id});
 		console.log("Found Journal");
 		console.log(foundJournal);
+		const foundEntries = foundJournals.reduce((accum, journal))
 		res.render('journals/edit.ejs', {
 			journal: foundJournal,
 			title: "Edit Journal",
