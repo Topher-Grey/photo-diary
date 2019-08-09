@@ -10,11 +10,18 @@ body {
 	background-repeat: no-repeat;
 }
 
+.registerlogin h1 {
+	color: white;
+	font-size: 72px;
+	text-align: center;
+	margin-top: 12%;
+}
+
 .login {
 	border-left: 6px solid blue;
   	background-color: lightgrey;
   	margin: auto;
-  	margin-top: 40%;
+  	margin-top: 25%;
   	width: 40%;
 }
 

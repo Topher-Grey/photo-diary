@@ -58,6 +58,28 @@ router.post('/', async (req, res, next) => {
 });
 
 // Show Page For Journal with Entry List
+router.get('/:id/edit', async (req, res, next) => {
+	try {
+		console.log("The username is: ");
+		console.log(req.session.username);
+		const userinfo = await User.find({username: req.session.username})
+		console.log("The user: ");
+		console.log(userinfo[0]);
+		const foundJournal = await Journal.findOne({_id: req.params.id});
+		console.log("Found Journal");
+		console.log(foundJournal);
+		const foundEntries = foundJournal.entries
+		console.log("/nFound Entries: ");
+		console.log(foundEntries);
+		res.render('journals/edit.ejs', {
+			journal: foundJournal,
+			title: "Edit Journal",
+			user: userinfo[0]
+		})
+	} catch(err){
+		next(err)
+	}
+});
 
 // Edit Page For Journal
 router.get('/:id/edit', async (req, res, next) => {
@@ -70,11 +92,13 @@ router.get('/:id/edit', async (req, res, next) => {
 		const foundJournal = await Journal.findOne({_id: req.params.id});
 		console.log("Found Journal");
 		console.log(foundJournal);
-		const foundEntries = foundJournals.reduce((accum, journal))
+		const foundEntries = foundJournal.entries
+		console.log("/nFound Entries: ");
+		console.log(foundEntries);
 		res.render('journals/edit.ejs', {
 			journal: foundJournal,
 			title: "Edit Journal",
-			user: userinfo
+			user: userinfo[0]
 		})
 	} catch(err){
 		next(err)

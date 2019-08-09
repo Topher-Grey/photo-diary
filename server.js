@@ -11,6 +11,7 @@ const authController 	= require('./controllers/authController')
 const userController 	= require('./controllers/users')
 const journalController = require('./controllers/journals')
 const entryController 	= require('./controllers/entries')
+const photoController	= require('./controllers/photos')
 
 
 app.use(express.static('public'))
@@ -20,7 +21,8 @@ app.use(methodOverride('_method'));
 app.use(session({
 	secret: 'secretmessage', //process.env.SESSION_SECRET,
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: false,
+	loggedIn: false
 }))
 
 
@@ -28,6 +30,7 @@ app.use('/auth', authController)
 app.use('/user', userController)
 app.use('/journals', journalController)
 app.use('/entries', entryController)
+app.use('/photos', photoController)
 
  
 

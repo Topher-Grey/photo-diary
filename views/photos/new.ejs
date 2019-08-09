@@ -1,0 +1,25 @@
+<% include ../partials/header.ejs%>
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<body>
+<% include ../partials/navbar.ejs%>
+
+
+	<div class='container text-center'>
+		<div>
+		<h2>Create New Photo:</h2>
+        <h4>Photo for <%=user.displayName%></h4>
+    	<form action="/photos" method="POST" class="form">
+            Photo Name:<input type="text" name="photoName">
+            Description:<input type="text" name="description">
+            Keywords:<input type="text" name="keywords">
+            URL:<input type="text" name="URL">
+
+            
+        	<button type='submit'>Create Entry</button>
+    	</form>
+
+    	</div>
+    </div>
+
+</body>
+</html>
