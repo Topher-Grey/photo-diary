@@ -6,12 +6,12 @@ const Journal  		= require('../models/journal');
 // Index page for journals
 router.get('/', async (req, res, next) => {
 	try {
-		console.log("The username is: ");
+		console.log("The username in journals is: ");
 		console.log(req.session.username);
 		const userinfo = await User.find({username: req.session.username})
-		console.log("The user: ");
+		console.log("The user for journals: ");
 		console.log(userinfo[0]);
-		const foundJournals = await Journal.find({user: userinfo._id});
+		const foundJournals = await Journal.find({user: userinfo[0]._id});
 		console.log("\n here is foundJournals");
 		console.log(foundJournals);
 		res.render('journals/index.ejs', {
@@ -75,6 +75,18 @@ router.get('/:id/edit', async (req, res, next) => {
 		})
 	} catch(err){
 		next(err)
+	}
+})
+
+router.put('/:id', async (req, res, next) => {
+	try{
+		console.log(req.body);
+		const updatedJournal = await Journal.findByIdAndUpdate(req.params.id, req.body)
+		console.log("Updated Journal");
+		console.log(updatedJournal);
+		res.redirect('/journals/')
+	} catch(err){
+		next(err);
 	}
 })
 

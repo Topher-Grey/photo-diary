@@ -10,8 +10,11 @@ if(process.env.NODE_ENV == "production"){
 
 mongoose.connect(connStr, { 
 	useNewUrlParser: true,
-	useCreateIndex: true
+	useCreateIndex: true,
+	useFindAndModify: false
 	});
+
+
 
 
 mongoose.connection.on('connected', () => {

@@ -10,6 +10,7 @@ require('./db/db')
 const authController 	= require('./controllers/authController')
 const userController 	= require('./controllers/users')
 const journalController = require('./controllers/journals')
+const entryController 	= require('./controllers/entries')
 
 
 app.use(express.static('public'))
@@ -26,6 +27,7 @@ app.use(session({
 app.use('/auth', authController)
 app.use('/user', userController)
 app.use('/journals', journalController)
+app.use('/entries', entryController)
 
  
 
