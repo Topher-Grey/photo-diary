@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
 		const createdEntry = await Entry.create(req.body);
 		console.log("Created Entry: ");
 		console.log(createdEntry);
-		const foundJournal = await Journal.findById({req.body.journalName})
+		const foundJournal = await Journal.findById({})
 		console.log(foundJournal);
 		res.redirect('/journals')
 	} catch(err){
