@@ -1,0 +1,22 @@
+<% include ../partials/header.ejs%>
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<body>
+<% include ../partials/navbar.ejs%>
+
+
+	<div class='container text-center'>
+		<div>
+		<h2><%=journal.journalName%></h2>
+        <h4>Journal for <%=user.displayName%></h4>
+        <ul>
+            <%for(let i = 0; i < journal.entries.length; i++){ %>
+                <li><a href='/entries/<%=journal.entries[i]._id%>'><%=journal.entries[i].title%></a></li>
+                <form action="/entries/<%=journal.entries[i]._id%>/edit" method="GET"><button>Edit</button></form>
+            <% } %>
+        </ul>
+            
+    	</div>
+    </div>
+
+</body>
+</html>

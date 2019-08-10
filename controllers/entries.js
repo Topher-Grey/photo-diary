@@ -36,8 +36,59 @@ router.post('/', async (req, res, next) => {
 		const createdEntry = await Entry.create(req.body);
 		console.log("Created Entry: ");
 		console.log(createdEntry);
-		const foundJournal = await Journal.findById({})
+		const foundJournal = await Journal.findById(req.body.journalName)
 		console.log(foundJournal);
+		foundJournal.entries.push(createdEntry);
+		const savedJournal = await foundJournal.save();
+		res.redirect('/journals')
+	} catch(err){
+		next(err)
+	}
+});
+
+// Entry Show Page
+router.get('/:id', async (req, res, next) => {
+	try {
+		const foundEntry = await Entry.findById(req.params.id);
+		console.log("Found Entry: ", foundEntry);
+		res.render('entries/show.ejs', {
+			entry: foundEntry,
+			title: "Entry Page"
+		})
+	} catch(err){
+		next(err)
+	}
+});
+
+// Edit Entry
+router.get('/:id/edit', async (req, res, next) => {
+	try {
+		const foundEntry = await Entry.findById(req.params.id);
+		console.log("Found Entry: ", foundEntry);
+		res.render('entries/edit.ejs', {
+			entry: foundEntry,
+			title: "Entry Edit Page"
+		})
+	} catch(err){
+		next(err)
+	}
+});
+
+router.put('/:id', async (req, res, next) => {
+	try {
+		console.log(req.body);
+		const updatedEntry = await Entry.findByIdAndUpdate(req.params.id, req.body)
+		console.log("Updated Entry: ", updatedEntry);
+		res.redirect('/journals/')
+	} catch(err){
+		next(err)
+	}
+});
+
+router.delete('/:id', async (req, res, next) => {
+	try {
+		const deletedEntry = await Entry.findByIdAndDelete(req.params.id)
+		console.log("Deleted Entry: ", deletedEntry);
 		res.redirect('/journals')
 	} catch(err){
 		next(err)

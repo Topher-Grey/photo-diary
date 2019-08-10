@@ -58,23 +58,24 @@ router.post('/', async (req, res, next) => {
 });
 
 // Show Page For Journal with Entry List
-router.get('/:id/edit', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
 	try {
 		console.log("The username is: ");
 		console.log(req.session.username);
 		const userinfo = await User.find({username: req.session.username})
 		console.log("The user: ");
 		console.log(userinfo[0]);
-		const foundJournal = await Journal.findOne({_id: req.params.id});
+		const foundJournal = await Journal.findOne({_id: req.params.id}).populate('entries').exec();
 		console.log("Found Journal");
 		console.log(foundJournal);
-		const foundEntries = foundJournal.entries
-		console.log("/nFound Entries: ");
-		console.log(foundEntries);
-		res.render('journals/edit.ejs', {
+		// const foundEntries = foundJournal.populate('entries').exec();
+		// console.log("/nFound Entries: ");
+		// console.log(foundEntries);
+		res.render('journals/show.ejs', {
 			journal: foundJournal,
-			title: "Edit Journal",
+			title: "Journal",
 			user: userinfo[0]
+			// entries: foundEntries
 		})
 	} catch(err){
 		next(err)

@@ -1,0 +1,27 @@
+<% include ../partials/header.ejs%>
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+<body>
+<% include ../partials/navbar.ejs%>
+
+
+	<div class='container text-center'>
+		<div>
+		<h2>Edit Entry:</h2>
+    	<form method="POST" action="/entries/<%=entry._id%>?_method=PUT">
+    		Journal Date: <input type="date" value="<%=entry.journalDate%>" name="journalDate">
+    		Entry Title: <input type="text" value="<%=entry.title%>" name="title">
+    		Keywords:<input type="text" value="<%=entry.keywords%>" name="keywords">
+            Journal Entry:<input type="textbox" value="<%=entry.journalEntry%>" name="journalEntry">
+            <br/>
+            <input type='submit' value="Edit Entry">
+    	</form>
+        <br/>
+
+        <form action="/entries/<%=entry._id%>?_method=DELETE" method='POST'><input type="submit" name="DELETE" value="Delete Entry"></form>
+        <br/>
+
+    	</div>
+    </div>
+
+</body>
+</html>
